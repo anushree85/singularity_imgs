@@ -51,9 +51,7 @@ A portable Ubuntu 16.04 environment with pre-built machine learning frameworks i
 
     # Install the necessary packages (from repo)
     apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-        ca-certificates \
-    	autoconf \
+        autoconf \
 	automake \
         bc \
 	cmake \
