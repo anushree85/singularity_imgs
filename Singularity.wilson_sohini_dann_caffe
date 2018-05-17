@@ -51,6 +51,8 @@ A portable Ubuntu 16.04 environment with pre-built machine learning frameworks i
 
     # Install the necessary packages (from repo)
     apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
     	autoconf \
 	automake \
         bc \
@@ -126,7 +128,8 @@ A portable Ubuntu 16.04 environment with pre-built machine learning frameworks i
     do
         pip install $req
     done
-
+    #install sqllalchemy
+    pip install sqlalchemy
     # make Caffe
     # NOTE: in the future we may want -DUSE_NCCL=1
     mkdir build
