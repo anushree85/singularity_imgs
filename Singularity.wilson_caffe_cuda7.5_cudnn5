@@ -1,0 +1,134 @@
+# Ubuntu 14.04 based container with CUDA 7.5 and cuDNN 5.1 (and python)
+  
+BootStrap: docker
+From: nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
+
+%help
+You're on your own.
+
+%labels
+Maintainer anushreephy@gmail.com
+CUDA 7.5
+cuDNN 5
+OS Ubuntu14.04
+
+%environment
+    # set these environment variables
+    export CUDA_ROOT=/usr/local/cuda
+    export CUDA_HOME=/usr/local/cuda
+    export PATH=$PATH:$CUDA_ROOT/bin
+    export LD_LIBRARY_PATH=$CUDA_ROOT/lib64
+  
+%runscript
+    # Check the current environment
+    chk_nvidia_uvm=$(grep nvidia_uvm /proc/modules)
+    if [ -z "$chk_nvidia_uvm" ]; then
+        echo "Problem detected on the host: the Linux kernel module nvidia_uvm is not loaded"
+    fi
+    exec /bin/bash
+%setup
+    # Runs from outside the container during Bootstrap
+    workdir=$(pwd)    
+
+%post
+    # Runs within the container during Bootstrap
+
+    # make lqcd filesystem mount points
+    mkdir /scratch /data /project /lqcdproj
+    
+    # Set up some required environment defaults
+    export LC_ALL=C
+    export CUDA_HOME=/usr/local/cuda
+    export CUDA_ROOT=/usr/local/cuda
+    export PATH=/bin:/sbin:/usr/bin:/usr/sbin:${CUDA_HOME}/bin:$PATH
+    export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/extras/CUPTI/lib64
+    
+	##### INSTALL ALL DEPENDENCIES #####
+
+    apt-get update && apt-get install -y --no-install-recommends \
+        autoconf \
+	automake \
+        bc \
+	cmake \
+        curl \
+	g++ \
+	gfortran \
+        git \
+	libatlas-base-dev \
+	libatlas3-base \
+	libblas-dev \
+	libboost-all-dev \
+	libcupti-dev \
+	libcurl4-openssl-dev \
+	libffi-dev \
+        libfreetype6-dev \
+	libgflags-dev \
+	libgoogle-glog-dev \
+        libgraphviz-dev \
+	libhdf5-serial-dev \
+	libibverbs-dev \
+	libjpeg-dev \
+	libleveldb-dev \
+	liblcms2-dev \
+	liblapack-dev \
+	liblapacke-dev \
+	liblmdb-dev \
+        libopenblas-dev \
+	libopenmpi-dev \
+	libopencv-dev \
+	libprotobuf-dev \
+        libpng-dev \
+	libsnappy-dev \
+	libssl-dev \
+	libxml2-dev \
+	libtiff5-dev \
+	libwebp-dev \
+        libzmq3-dev \
+        pkg-config \
+	protobuf-compiler \
+        python-dev \
+        python-pip \
+        python-pydot \
+	python-setuptools \
+	python-tk \
+        rsync \
+        software-properties-common \
+	time \
+        unzip \
+	vim \
+	zip \
+	wget \
+        zlib1g-dev
+    apt-get clean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/*
+
+    ##### INSTALL CAFFE #####
+
+    # get Caffe source code (DANN included)
+    cd /opt/
+    # to avoid "Problem with the SSL CA cert (path? access rights?)"
+    update-ca-certificates
+    git https://github.com/anushree85/caffe.git
+    cd caffe/
+
+    # install python packages for Caffe
+    pip install --upgrade pip
+    # during build from recipe file pip install ipython>=3.0.0 try to install
+    # ipython v6 which is incompatible with python version
+    # sed is added to force ipython < 6
+    for req in $(cat python/requirements.txt | sed 's/ipython>=3.0.0/ipython>=3.0.0,<6/g') pydot
+	do
+        pip install $req
+    done
+     #install sqllalchemy
+    pip install sqlalchemy
+    # make Caffe
+    mkdir build
+    cd build/
+    #cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 ..
+    cmake -DUSE_CUDNN=1 ..
+    make
+
+%runscript
+    exec /opt/caffe/build/tools/caffe
