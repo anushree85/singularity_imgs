@@ -109,7 +109,7 @@ OS Ubuntu16.04
     cd /opt/
     # to avoid "Problem with the SSL CA cert (path? access rights?)"
     update-ca-certificates
-    git https://github.com/anushree85/caffe.git
+    git clone https://github.com/anushree85/caffe.git
     cd caffe/
 
     # install python packages for Caffe
