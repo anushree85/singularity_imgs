@@ -12,7 +12,6 @@ Maintainer anushreephy@gmail.com
 CUDA 7.5
 cuDNN 5
 OS Ubuntu14.04
-NVIDIA-DRIVER 375.26
 
 %environment
     export CUDA_ROOT=/usr/local/cuda/
