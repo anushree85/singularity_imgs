@@ -1,16 +1,16 @@
-# Ubuntu 14.04 based container with CUDA 7.5 and cuDNN 5.1 (and python)
+# Ubuntu 16.04 based container with CUDA 8 and cuDNN 6 (and python)
   
 BootStrap: docker
-From: nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
+From: nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 
 %help
 You're on your own.
 
 %labels
 Maintainer anushreephy@gmail.com
-CUDA 7.5
-cuDNN 5
-OS Ubuntu14.04
+CUDA 8
+cuDNN 6
+OS Ubuntu16.04
 
 %environment
     # set these environment variables
