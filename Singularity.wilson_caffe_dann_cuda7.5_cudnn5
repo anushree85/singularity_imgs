@@ -51,7 +51,6 @@ NVIDIA-DRIVER 375.26
 
     # clean after apt
     rm -rf /var/lib/apt/lists/*
-	##### INSTALL NVIDIA DRIVERS #####
 
     ##### INSTALL CAFFE #####
 
