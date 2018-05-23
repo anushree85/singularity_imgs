@@ -69,7 +69,7 @@ OS Ubuntu14.04
 	do
         pip install $req
     done
-
+    
     # make Caffe
     mkdir build
     cd build/
