@@ -86,7 +86,6 @@ ln -v -s libnvidia-ml.so.375.26 libnvidia-ml.so.1
     # to avoid "Problem with the SSL CA cert (path? access rights?)"
     update-ca-certificates
     git clone -b caffe_dann --depth 1 https://github.com/anushree85/caffe.git
-    mv titan-zlib-0.15.13-DANN caffe
     cd caffe/
 
     # install python packages for Caffe
