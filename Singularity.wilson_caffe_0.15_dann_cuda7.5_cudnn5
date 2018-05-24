@@ -51,7 +51,7 @@ OS Ubuntu14.04
     # clean after apt
     rm -rf /var/lib/apt/lists/*
 
-    ##### INSTALL CAFFE #####
+    ##### INSTALL CAFFE tag 0.15 #####
 
     # get Caffe source code (NO DANN included)
     cd /opt/
