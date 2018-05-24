@@ -88,8 +88,7 @@ OS Ubuntu14.04
 	do
         pip install $req
     done
-    #install sqllalchemy
-    pip install sqlalchemy
+ 
     # make Caffe
     mkdir build
     cd build/
