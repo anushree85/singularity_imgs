@@ -16,8 +16,20 @@ OS Ubuntu14.04
 %environment
     export CUDA_ROOT=/usr/local/cuda/
     export CUDA_HOME=/usr/local/cuda/
-    export PATH=$PATH:/usr/local/NVIDIA-Linux-x86_64/:$CUDA_ROOT/bin
-    export LD_LIBRARY_PATH=/usr/local/NVIDIA-Linux-x86_64/:$CUDA_ROOT/lib64
+    export PATH=$PATH:$CUDA_ROOT/bin
+    export LD_LIBRARY_PATH=$CUDA_ROOT/lib64
+    
+%runscript
+    # Check the current environment
+    chk_nvidia_uvm=$(grep nvidia_uvm /proc/modules)
+    if [ -z "$chk_nvidia_uvm" ]; then
+      echo "Problem detected on the host: the Linux kernel module nvidia_uvm is not loaded"
+    fi
+    exec /bin/bash
+  
+ %setup
+    # Runs from outside the container during Bootstrap
+    workdir=$(pwd) 
 
 %post
     # not sure if they all are required?
@@ -25,6 +37,13 @@ OS Ubuntu14.04
     mkdir /scratch /data /project /lqcdproj
 	##### INSTALL ALL DEPENDENCIES #####
 
+ # Set up some required environment defaults
+    export LC_ALL=C
+    export CUDA_HOME=/usr/local/cuda
+    export CUDA_ROOT=/usr/local/cuda
+    export PATH=/bin:/sbin:/usr/bin:/usr/sbin:${CUDA_HOME}/bin:$PATH
+    export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/extras/CUPTI/lib64
+    
     apt update && apt install -y --no-install-recommends \
         build-essential \
         ca-certificates \
