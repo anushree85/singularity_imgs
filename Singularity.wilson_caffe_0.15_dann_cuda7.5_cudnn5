@@ -56,7 +56,7 @@ OS Ubuntu14.04
     cd /opt/
     # to avoid "Problem with the SSL CA cert (path? access rights?)"
     update-ca-certificates
-    git clone -b caffe_0.15_dann --depth 1 https://github.com/anushree85/caffe.git
+    git clone -b caffe_dann --depth 1 https://github.com/anushree85/caffe.git
     cd caffe/
 
     # install python packages for Caffe
