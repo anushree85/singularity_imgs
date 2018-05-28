@@ -52,13 +52,13 @@ OS Ubuntu14.04
     
     ##### INSTALL NCLL #####
 
-    cd /opt/
-    git clone https://github.com/NVIDIA/nccl.git
-    cd nccl/
-    make
-    make install
-    cd ../
-    rm -rf nccl
+    #cd /opt/
+    #git clone https://github.com/NVIDIA/nccl.git
+    #cd nccl/
+    #make
+    #make install
+    #cd ../
+    #rm -rf nccl
 
     ##### INSTALL CAFFE #####
 
