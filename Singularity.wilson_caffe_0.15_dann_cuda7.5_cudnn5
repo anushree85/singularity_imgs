@@ -84,6 +84,7 @@ OS Ubuntu14.04
     #cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 ..
     cmake -DUSE_CUDNN=1 ..
     make
+    make pycaffe
     
 %runscript
     exec /opt/caffe/build/tools/caffe
