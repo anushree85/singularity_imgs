@@ -176,7 +176,7 @@ A portable Ubuntu 16.04 environment with pre-built caffe. Original recipe by J. 
     # Caffe master branch
     #
     ( mkdir -p /usr/local/caffe/source && \
-        git clone https://github.com/anushree85/caffe.git /usr/local/caffe/source && \
+       git clone -b master --depth 1 https://github.com/BVLC/caffe.git /usr/local/caffe/source && \
         cd /usr/local/caffe/source && \
         cat python/requirements.txt | xargs -n1 pip install && \
         mkdir build && cd build && \
@@ -184,6 +184,7 @@ A portable Ubuntu 16.04 environment with pre-built caffe. Original recipe by J. 
         cmake -DCMAKE_INSTALL_PREFIX=/usr/local/caffe -DUSE_CUDNN=1 -DUSE_NCCL=1 -DCUDA_ARCH_NAME="Manual" -DCUDA_ARCH_BIN="30 35 50 60 61" .. && \
         make all && \
         make install \
+        make pycaffe \
     )
 
     /sbin/ldconfig
