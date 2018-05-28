@@ -188,7 +188,7 @@ A portable Ubuntu 16.04 environment with pre-built caffe. Original recipe by J. 
     )
 
     /sbin/ldconfig
-
+    
 %test
 # Sanity check that the container is operating
 #
