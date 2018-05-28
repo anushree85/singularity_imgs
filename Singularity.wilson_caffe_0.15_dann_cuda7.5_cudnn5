@@ -49,6 +49,16 @@ OS Ubuntu14.04
 
     # clean after apt
     rm -rf /var/lib/apt/lists/* 
+    
+    ##### INSTALL NCLL #####
+
+    cd /opt/
+    git clone https://github.com/NVIDIA/nccl.git
+    cd nccl/
+    make
+    make install
+    cd ../
+    rm -rf nccl
 
     ##### INSTALL CAFFE #####
 
@@ -62,7 +72,8 @@ OS Ubuntu14.04
     # install python packages for Caffe
     pip install --upgrade pip
     # during build from recipe file pip install ipython>=3.0.0 try to install
-    for req in $(cat python/requirements.txt) pydot
+    # sed is added to force ipython < 6
+    for req in $(cat python/requirements.txt | sed 's/ipython>=3.0.0/ipython>=3.0.0,<6/g') pydot
 	do
         pip install $req
     done
