@@ -40,11 +40,20 @@ OS Ubuntu14.04
         libprotobuf-dev \
         libsnappy-dev \
         protobuf-compiler \
+	graphviz \
         python-dev \
         python-numpy \
         python-pip \
+	python-pydot \
         python-setuptools \
         python-scipy \
+	python-tk \
+	rsync \
+        software-properties-common \
+        time \
+        unzip \
+        vim \
+        zip \
         wget
 
     # clean after apt
