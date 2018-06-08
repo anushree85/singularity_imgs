@@ -75,14 +75,14 @@ OS Ubuntu14.04
     cd /opt/
     # to avoid "Problem with the SSL CA cert (path? access rights?)"
     update-ca-certificates
-    git clone -b weighted_softmax_gustavla_caffe --depth 1 https://github.com/anushree85/caffe.git
+    git clone -b weightsoftmax_caffe --depth 1 https://github.com/anushree85/caffe.git
     cd caffe/
 
     # install python packages for Caffe
     pip install --upgrade pip
-   # ipython v6 which is incompatible with python version
+    # during build from recipe file pip install ipython>=3.0.0 try to install
     # sed is added to force ipython < 6
-    for req in $(cat python/requirements.txt | sed 's/ipython>=1.1.0/ipython>=1.1.0,<6/g') pydot
+    for req in $(cat python/requirements.txt | sed 's/ipython>=3.0.0/ipython>=3.0.0,<6/g') pydot
     do
         pip install $req
     done
