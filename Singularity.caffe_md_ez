@@ -95,6 +95,6 @@ cuda_driver unspecified
     cmake -DUSE_CUDNN=1 ..
     make
     make pycaffe
-    
+   
 %runscript
     exec /opt/caffe/build/tools/caffe
