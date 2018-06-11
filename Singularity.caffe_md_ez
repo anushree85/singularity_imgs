@@ -114,7 +114,7 @@ A portable Ubuntu 14.04 environment with DANN included caffe
     cd /opt/
     # to avoid "Problem with the SSL CA cert (path? access rights?)"
     update-ca-certificates
-    git clone -b caffe_mohamed_ezz --depth 1 https://github.com/sohiniu/caffe.git
+    git clone -b caffe_weighedsoftmax_new --depth 1 https://github.com/sohiniu/caffe.git
     cd caffe
 
     # install python packages for Caffe
