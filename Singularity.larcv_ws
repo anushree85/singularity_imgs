@@ -80,4 +80,6 @@ Version ubuntu16.04-root06.08.06-gpu-larcv2
     mkdir -p $LARCV_LIBDIR
     mkdir -p $LARCV_BINDIR
     cd $LARCV_BASEDIR && make -j4
+    #install sqllalchemy
+    pip install sqlalchemy
     
