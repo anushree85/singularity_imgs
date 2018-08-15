@@ -82,4 +82,12 @@ Version ubuntu16.04-root06.08.06-gpu-larcv2
     cd $LARCV_BASEDIR && make -j4
     #install sqllalchemy
     pip install sqlalchemy
+    sudo apt-get install libboost-all-dev
+    #git clone https://github.com/swig/swig.git
+    #cd swig
+   #./autogen.sh
+   #./configure
+   # make
+   # sudo make install
+ 
     
