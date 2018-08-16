@@ -84,6 +84,7 @@ Version ubuntu16.04-root06.08.06-gpu-larcv2
     #pip install --upgrade pip
     pip install sqlalchemy
     pip install boost 
+    pip install cmake
     #git clone https://github.com/swig/swig.git
     #cd swig
    #./autogen.sh
