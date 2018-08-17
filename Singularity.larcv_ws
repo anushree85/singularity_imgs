@@ -83,7 +83,7 @@ Version ubuntu16.04-root06.08.06-gpu-larcv2
     #install sqllalchemy
     #pip install --upgrade pip
     pip install sqlalchemy
-    pip install boost 
+    pip2.7 install boost 
     pip install cmake
     #git clone https://github.com/swig/swig.git
     #cd swig
