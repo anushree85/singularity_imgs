@@ -41,7 +41,7 @@ From: nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
     # apt-get
     apt-get -y update
     apt-get -y install dpkg-dev g++ gcc binutils libqt4-dev python-dev python-pip git wget emacs vim cmake
-  
+    apt-get install sqlite3 libsqlite3-dev
      
 
     # ROOT    
@@ -62,7 +62,7 @@ From: nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
     pip install jupyter notebook
     pip install tensorflow-gpu
     pip install boost --with-python
-
+    pip install sqlalchemy
     # larcv
     export LARCV_BASEDIR=/app/larcv2
     export LARCV_BUILDDIR=${LARCV_BASEDIR}/build
