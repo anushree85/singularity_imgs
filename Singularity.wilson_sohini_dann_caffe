@@ -134,6 +134,6 @@ A portable Ubuntu 14.04 environment with DANN included caffe
     cd build/
     cmake -DUSE_CUDNN=1 ..
     make
-
+    
 %runscript
     exec /opt/caffe/build/tools/caffe
