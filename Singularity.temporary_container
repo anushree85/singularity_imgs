@@ -48,7 +48,7 @@ A portable Ubuntu 16.04 environment with pre-built caffe.
     export CUDA_ROOT=/usr/local/cuda
     export PATH=/bin:/sbin:/usr/bin:/usr/sbin:${CUDA_HOME}/bin:$PATH
     export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/extras/CUPTI/lib64
-
+    
     # Install the necessary packages (from repo)
     apt-get update && apt-get install -y --no-install-recommends \
       autoconf \
