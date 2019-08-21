@@ -56,5 +56,4 @@ Version ubuntu16.04-py3-tf-alpha-gpu
     python3 -m pip install https://github.com/gnperdue/gym-oscillator/zipball/master
 
 
-    
-    
+   
