@@ -46,7 +46,7 @@ Version ubuntu16.04-py3-tf-alpha-gpu
         vim \
         zip \
         wget
-
+	
     # pip
     python3 -m pip install --upgrade setuptools pip
     python3 -m pip install --no-cache-dir --upgrade tf-nightly-gpu tf-agents-nightly tfp-nightly tensorflow-datasets
